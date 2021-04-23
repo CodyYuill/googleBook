@@ -2,13 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
-import clsx from "clsx";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
+import SearchBar from "../components/SearchBar";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -39,26 +33,14 @@ function Search() {
                         <h2>Search and Save Books of Interest</h2>
                     </Paper>
                     <Paper className={classes.paper}>
-                        <FormControl
-                            className={clsx(classes.margin, classes.textField)}
-                        >
-                            <InputLabel>Search</InputLabel>
-                            <Input
-                                className={classes.input}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            type="submit"
-                                            className={classes.iconButton}
-                                            aria-label="search"
-                                        >
-                                            <SearchIcon />
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                            />
-                        </FormControl>
+                        <SearchBar />
                     </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                    <Paper className={classes.paper}>
+                        <h1>LIST GO HERE</h1>
+                    </Paper>
+
                 </Grid>
             </Grid>
         </>
