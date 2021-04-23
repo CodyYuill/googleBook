@@ -26,19 +26,21 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Search() {
+function Search(props) {
     const classes = useStyles();
     return (
         <FormControl className={clsx(classes.margin, classes.textField)}>
             <InputLabel>Search</InputLabel>
             <Input
                 className={classes.input}
+                onChange={props.handleInputChange}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton
                             type="submit"
                             className={classes.iconButton}
                             aria-label="search"
+                            onClick={props.handleSearch}
                         >
                             <SearchIcon />
                         </IconButton>
