@@ -12,14 +12,13 @@ function SearchedBook(props) {
             </Grid>
             <Grid item xs={12} sm={6}>
                 <ButtonGroup
-                    variant="text"
                     color="primary"
                     aria-label="text primary button group"
                 >
                     <Button href={props.link} target="_blank">
                         View
                     </Button>
-                    <Button>Save</Button>
+                    <Button onClick={()=>props.handleSave(props.id)}>Save</Button>
                 </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={3}>

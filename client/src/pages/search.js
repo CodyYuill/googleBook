@@ -43,6 +43,18 @@ function Search() {
         });
     };
 
+    const handleSave = (id) => {
+        //maybe make saved notif alert("Saved!");
+        console.log(bookList[id]);
+        API.saveBook({
+            authors: bookList[id].volumeInfo.authors,
+            desription: bookList[id].volumeInfo.description,
+            image: bookList[id].volumeInfo.imageLinks.thumbnail,
+            link: bookList[id].volumeInfo.infoLink,
+            title: bookList[id].volumeInfo.title,
+        }).catch(err => console.log(err));
+    };
+
     return (
         <>
             <Grid container spacing={3}>
@@ -63,12 +75,7 @@ function Search() {
                         {bookList.map((value, index) => {
                             return (
                                 <div key={index}>
-                                    <Grid
-                                        container
-                                        spacing={3}
-                                        item
-                                        xs={12}
-                                    >
+                                    <Grid container spacing={3} item xs={12}>
                                         <SearchedBook
                                             title={value.volumeInfo.title}
                                             authors={value.volumeInfo.authors}
@@ -80,6 +87,8 @@ function Search() {
                                             description={
                                                 value.volumeInfo.description
                                             }
+                                            handleSave={handleSave}
+                                            id={index}
                                         />
                                     </Grid>
                                     <hr />
