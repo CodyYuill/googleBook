@@ -1,12 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import IconButton from "@material-ui/core/IconButton";
+import { IconButton, Input, InputLabel, InputAdornment, FormControl } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import clsx from "clsx";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
     paper: {

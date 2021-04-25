@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { Paper, Grid } from "@material-ui/core";
 import SearchBar from "../components/SearchBar";
 import SearchedBook from "../components/SearchedBook";
+import Hero from "../components/Hero";
 import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
@@ -48,7 +48,7 @@ function Search() {
         console.log(bookList[id]);
         API.saveBook({
             authors: bookList[id].volumeInfo.authors,
-            desription: bookList[id].volumeInfo.description,
+            description: bookList[id].volumeInfo.description,
             image: bookList[id].volumeInfo.imageLinks.thumbnail,
             link: bookList[id].volumeInfo.infoLink,
             title: bookList[id].volumeInfo.title,
@@ -59,10 +59,7 @@ function Search() {
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper}>
-                        <h1>(React) Google Books Search</h1>
-                        <h2>Search and Save Books of Interest</h2>
-                    </Paper>
+                    <Hero />
                     <Paper className={classes.paper}>
                         <SearchBar
                             handleInputChange={handleInputChange}
@@ -75,7 +72,7 @@ function Search() {
                         {bookList.map((value, index) => {
                             return (
                                 <div key={index}>
-                                    <Grid container spacing={3} item xs={12}>
+                                    <Grid container spacing={3} item xs={12} >
                                         <SearchedBook
                                             title={value.volumeInfo.title}
                                             authors={value.volumeInfo.authors}

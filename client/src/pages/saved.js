@@ -1,42 +1,60 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Paper } from "@material-ui/core";
+import Hero from "../components/Hero";
+import API from "../utils/API";
+import SavedBook from "../components/SavedBook";
 
-const useStyles = makeStyles((theme) => ({
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-    },
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 function Saved() {
     const classes = useStyles();
+
+    const [savedBooks, setSavedBooks] = useState([]);
+
+    useEffect(() => {
+        getSaved();
+    }, []);
+
+    const handleDelete = (id) => {
+        API.deleteBook(id);
+        getSaved();
+    };
+
+    const getSaved = () => {
+        API.getSaved().then((res) => {
+            setSavedBooks(res.data);
+            //console.log(res.data[0]._id);
+        });
+    };
+
     return (
         <>
-            <h1>SAVED PAGE</h1>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <Paper className={classes.paper}>xs=12</Paper>
+                    <Hero />
                 </Grid>
-                <Grid item lg={6}>
-                    <Paper className={classes.paper}>xs=6</Paper>
-                </Grid>
-                <Grid item lg={6}>
-                    <Paper className={classes.paper}>xs=6</Paper>
-                </Grid>
-                <Grid item lg={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item lg={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item lg={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
-                </Grid>
-                <Grid item lg={3}>
-                    <Paper className={classes.paper}>xs=3</Paper>
+                <Grid item xs={12}>
+                    <Paper>
+                        {savedBooks.map((value, index) => {
+                            return (
+                                <div key={index}>
+                                    <Grid container spacing={3} item xs={12}>
+                                        <SavedBook
+                                            title={value.title}
+                                            authors={value.authors}
+                                            link={value.link}
+                                            cover={value.image}
+                                            description={value.description}
+                                            handleDelete={handleDelete}
+                                            id={value._id}
+                                        />
+                                    </Grid>
+                                    <hr />
+                                </div>
+                            );
+                        })}
+                    </Paper>
                 </Grid>
             </Grid>
         </>

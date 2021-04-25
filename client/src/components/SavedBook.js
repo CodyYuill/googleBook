@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonGroup, Grid, Button } from "@material-ui/core";
 
-function SearchedBook(props) {
+function SavedBook(props) {
     return (
         <>
             <Grid item xs={12} sm={6}>
@@ -16,7 +16,7 @@ function SearchedBook(props) {
                     <Button href={props.link} target="_blank">
                         View
                     </Button>
-                    <Button onClick={()=>props.handleSave(props.id)}>Save</Button>
+                    <Button onClick={()=> props.handleDelete(props.id)}>Delete</Button>
                 </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={3}>
@@ -29,4 +29,4 @@ function SearchedBook(props) {
     );
 }
 
-export default SearchedBook;
+export default SavedBook;
