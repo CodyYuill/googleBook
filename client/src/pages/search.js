@@ -77,6 +77,7 @@ function Search() {
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
                         {bookList.map((value, index) => {
+                            //console.log(value.volumeInfo.authors);
                             return (
                                 <div key={index}>
                                     <Grid container spacing={3} item xs={12} >

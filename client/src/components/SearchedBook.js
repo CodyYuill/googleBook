@@ -1,12 +1,24 @@
-import React from "react";
+import React, {useEffect, useState } from "react";
 import { ButtonGroup, Grid, Button } from "@material-ui/core";
 
 function SearchedBook(props) {
+
+    const [authors, setAuthors] = useState("");
+
+    let authorsList = "";
+
+    useEffect(() => {
+        for(const author in props.authors){
+            authorsList += `${props.authors[author]}, `;
+        }
+        setAuthors(authorsList.slice(0, -2));
+    }, []);
+
     return (
         <>
             <Grid item xs={12} sm={6}>
                 <h3>{props.title}</h3>
-                <h3>{props.authors}</h3>
+                <h3>{authors}</h3>
             </Grid>
             <Grid item xs={12} sm={6}>
                 <ButtonGroup
@@ -21,7 +33,7 @@ function SearchedBook(props) {
                 </ButtonGroup>
             </Grid>
             <Grid item xs={12} sm={3}>
-                <img src={props.cover} alt="cover image"></img>
+                <img src={props.cover} alt="cover of book"></img>
             </Grid>
             <Grid item xs={12} sm={9}>
                 <p>{props.description}</p>
