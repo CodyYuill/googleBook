@@ -12,6 +12,7 @@ function SavedBook(props) {
                 <ButtonGroup
                     color="primary"
                     aria-label="text primary button group"
+                    style={{float: "right"}}
                 >
                     <Button href={props.link} target="_blank">
                         View
@@ -19,8 +20,8 @@ function SavedBook(props) {
                     <Button onClick={()=> props.handleDelete(props.id)}>Delete</Button>
                 </ButtonGroup>
             </Grid>
-            <Grid item xs={12} sm={3}>
-                <img src={props.cover} alt="cover image"></img>
+            <Grid item xs={12} sm={3} >
+                <img src={props.cover} alt="cover image" ></img>
             </Grid>
             <Grid item xs={12} sm={9}>
                 <p>{props.description}</p>

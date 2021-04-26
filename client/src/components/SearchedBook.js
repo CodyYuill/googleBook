@@ -12,6 +12,7 @@ function SearchedBook(props) {
                 <ButtonGroup
                     color="primary"
                     aria-label="text primary button group"
+                    style={{float: "right"}}
                 >
                     <Button href={props.link} target="_blank">
                         View

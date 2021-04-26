@@ -7,9 +7,16 @@ import Hero from "../components/Hero";
 import API from "../utils/API";
 
 const useStyles = makeStyles((theme) => ({
-    paper: {
+    paperCentered: {
         padding: theme.spacing(2),
         textAlign: "center",
+        color: theme.palette.text.primary,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: "justify",
+        marginLeft: "50px",
+        marginRight: "50px",
         color: theme.palette.text.primary,
     },
     input: {
@@ -60,7 +67,7 @@ function Search() {
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <Hero />
-                    <Paper className={classes.paper}>
+                    <Paper className={classes.paperCentered}>
                         <SearchBar
                             handleInputChange={handleInputChange}
                             handleSearch={handleSearch}

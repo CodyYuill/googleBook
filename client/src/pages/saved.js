@@ -5,7 +5,15 @@ import Hero from "../components/Hero";
 import API from "../utils/API";
 import SavedBook from "../components/SavedBook";
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: "justify",
+        marginLeft: "50px",
+        marginRight: "50px",
+        color: theme.palette.text.primary,
+    }
+}));
 
 function Saved() {
     const classes = useStyles();
@@ -24,7 +32,6 @@ function Saved() {
     const getSaved = () => {
         API.getSaved().then((res) => {
             setSavedBooks(res.data);
-            //console.log(res.data[0]._id);
         });
     };
 
@@ -35,7 +42,7 @@ function Saved() {
                     <Hero />
                 </Grid>
                 <Grid item xs={12}>
-                    <Paper>
+                    <Paper className={classes.paper}>
                         {savedBooks.map((value, index) => {
                             return (
                                 <div key={index}>
